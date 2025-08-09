@@ -10,7 +10,7 @@ export class InactivityService {
   private inactivityTimer$ = new BehaviorSubject<number>(0);
   private destroy$ = new Subject<void>();
   private activityEvents = ['mousedown', 'mousemove', 'keydown', 'scroll', 'touchstart', 'click'];
-  private timeoutDuration = 2 * 60 * 1000; // 2 minutos en milisegundos
+  private timeoutDuration = 1 * 60 * 1000; // 1 minuto en milisegundos
   private timer: any;
 
   constructor(private router: Router) {}

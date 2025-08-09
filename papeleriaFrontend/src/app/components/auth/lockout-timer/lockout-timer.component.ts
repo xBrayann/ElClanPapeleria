@@ -42,7 +42,7 @@ export class LockoutTimerComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     const timeSub = this.lockoutService.getTimeRemaining().subscribe((seconds: number) => {
-      this.progressPercentage = ((60 - seconds) / 60) * 100;
+      this.progressPercentage = ((30 - seconds) / 30) * 100;
     });
     this.subscriptions.add(timeSub);
   }

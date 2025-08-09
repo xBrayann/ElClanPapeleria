@@ -9,35 +9,31 @@ import { CommonModule } from '@angular/common';
   templateUrl: './inactivity-timer.component.html'
 })
 export class InactivityTimerComponent implements OnInit, OnDestroy {
-  timeRemaining: number = 120; // 2 minutes in seconds
+  timeRemaining: number = 60; //  seconds
   isWarningVisible: boolean = false;
-  private warningThreshold: number = 30; // Show warning when 30 seconds left
+  private warningThreshold: number = 30;
 
   constructor(private inactivityService: InactivityService) {}
 
   ngOnInit(): void {
-    // Since the service doesn't provide remaining time, we'll simulate
-    // the warning based on a simple timer approach
+    
     this.isWarningVisible = false;
   }
 
   ngOnDestroy(): void {
-    // Cleanup if needed
   }
 
-  // Method to show warning (called by parent component or service)
+
   showWarning(): void {
     this.isWarningVisible = true;
-    this.timeRemaining = 120; // Reset to 2 minutes
+    this.timeRemaining = 60; // Reset minutes
   }
 
-  // Method to hide warning
   hideWarning(): void {
     this.isWarningVisible = false;
   }
 
   extendSession(): void {
-    // Reset the inactivity timer
     this.inactivityService.stopMonitoring();
     this.inactivityService.startMonitoring();
     this.isWarningVisible = false;

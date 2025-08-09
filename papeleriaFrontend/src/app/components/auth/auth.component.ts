@@ -52,7 +52,6 @@ export class AuthComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Verificar si hay un bloqueo activo al iniciar
     this.lockoutService.isLockedOut().subscribe(isLocked => {
       if (isLocked) {
         console.log('Bloqueo activo detectado');
@@ -74,7 +73,6 @@ export class AuthComponent implements OnInit {
 
     const { nombre, email, password, direccion, telefono } = form.value;
 
-    // Validación de inyección SQL y caracteres especiales
     if (this.containsInjectionAttempt(nombre)) {
       alert('⚠️ Eso no se permite, por favor coloca bien los datos. El nombre solo puede contener letras y espacios.');
       return;
@@ -110,7 +108,6 @@ export class AuthComponent implements OnInit {
       return;
     }
 
-    // Only validate password strength during registration
     if (!this.isLoginMode) {
       const securityLevel = this.getPasswordSecurityLevel(password);
       if (securityLevel === 'Débil') {
@@ -189,7 +186,6 @@ export class AuthComponent implements OnInit {
   private login(formData: LoginData): void {
     this.apiService.login(formData).subscribe({
       next: ({ token, userId }) => {
-        // Limpiar intentos fallidos al tener éxito
         this.lockoutService.clearLockout();
         
         if (isPlatformBrowser(this.platformId)) {
@@ -202,13 +198,11 @@ export class AuthComponent implements OnInit {
       },
       error: (error) => {
         if (error.status === 429) {
-          // Activar el bloqueo en el frontend cuando el backend responda 429
           this.lockoutService.recordFailedAttempt();
           return;
         }
         
         if (error.status === 401) {
-          // Registrar intento fallido
           this.lockoutService.recordFailedAttempt();
           
           const errorMessage = error.error?.error || error.error?.message || 'Credenciales incorrectas';
@@ -227,7 +221,6 @@ export class AuthComponent implements OnInit {
         } else if (error.status === 405) {
           alert('Error: Método no permitido. Verifica la configuración del servidor.');
         } else {
-          // Registrar cualquier otro error como intento fallido
           this.lockoutService.recordFailedAttempt();
           alert('Credenciales incorrectas. Inténtalo de nuevo.');
         }

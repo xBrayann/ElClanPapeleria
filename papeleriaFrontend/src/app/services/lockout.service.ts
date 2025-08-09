@@ -12,7 +12,7 @@ export class LockoutService {
   lockoutEndTime$ = this.lockoutEndTimeSubject.asObservable();
   failedAttempts$ = this.failedAttemptsSubject.asObservable();
   
-  private readonly LOCKOUT_DURATION = 60; 
+  private readonly LOCKOUT_DURATION = 30; 
   private readonly MAX_ATTEMPTS = 3;
 
   constructor() {
