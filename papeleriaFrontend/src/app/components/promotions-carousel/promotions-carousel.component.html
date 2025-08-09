@@ -1,0 +1,13 @@
+<div class="carousel-container">
+  <button class="nav-button prev" (click)="prev()">&#10094;</button>
+  <div class="carousel-slide">
+    <a [routerLink]="promotions[currentIndex].link" class="promo-link">
+      <img [src]="promotions[currentIndex].image" [alt]="promotions[currentIndex].title" class="promo-image" />
+      <div class="promo-info">
+        <h3>{{ promotions[currentIndex].title }}</h3>
+        <p>{{ promotions[currentIndex].description }}</p>
+      </div>
+    </a>
+  </div>
+  <button class="nav-button next" (click)="next()">&#10095;</button>
+</div>

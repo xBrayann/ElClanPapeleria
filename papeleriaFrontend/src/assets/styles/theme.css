@@ -1,0 +1,9 @@
+:root {
+  --primary-color: #FFC107; /* Color principal */
+  --secondary-color: #E91E63; /* Color secundario */
+  --accent-color: #03A9F4; /* Color de acento */
+  --dark-color: #212121; /* Color oscuro */
+  --highlight-color: #9C27B0; /* Color de resaltado */
+  --text-color: #333333; /* Color del texto */
+  --background-color: #FFFFFF; /* Color de fondo */
+}

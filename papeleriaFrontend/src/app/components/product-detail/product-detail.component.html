@@ -1,0 +1,29 @@
+<div class="product-detail-container">
+    <div *ngIf="loading" class="loading-spinner">
+      Cargando detalles del producto...
+    </div>
+  
+    <div *ngIf="error" class="error-message">
+      {{ error }}
+    </div>
+  
+    <div *ngIf="product && !loading" class="product-detail-grid">
+      <div class="product-image-container">
+        <img [src]="product.imagen" [alt]="product.nombre" class="product-image">
+      </div>
+      
+      <div class="product-info">
+        <h1 class="product-title">{{ product.nombre }}</h1>
+        <p class="product-description">{{ product.descripcion }}</p>
+        
+        <div class="product-meta">
+          <p class="product-price">${{ product.precio | number }}</p>
+          <p class="product-stock">Stock disponible: {{ product.stock }}</p>
+          <p class="product-category">Categoría: {{ product.categoria }}</p>
+          <p class="product-brand">Marca: {{ product.marca }}</p>
+          <button (click)="addToCart(product)" class="btn-add-to-cart">Agregar al Carrito</button>
+        </div>
+  
+      </div>
+    </div>
+  </div>

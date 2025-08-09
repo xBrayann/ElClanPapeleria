@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
+
+<div class="flex justify-between items-center py-4">
+  <div class="flex items-center">
+    <img src="../assets/images/logo.jpg" alt="Papelería CLAN" class="logo" />  
+  </div>
+  <div class="flex items-center ml-auto">
+
+<a *ngIf="!isAuthenticated" routerLink="/auth" class="mr-2 perfil-link">Iniciar Sesión</a>
+
+
+<a routerLink="/carrito" class="mr-2 perfil-link cart-icon">
+      <i class="fas fa-shopping-cart icono-carrito"></i>
+      <span class="cart-badge" *ngIf="cartItemCount > 0">{{ cartItemCount }}</span>
+</a>
+<a class="mr-2 perfil-link" routerLink="/perfil">
+  <i class="fas fa-user icono-perfil"></i>
+</a>
+  </div>
+</div>
+
+<nav class="navbar">
+  <a routerLink="/home" class="nav-link">Inicio</a>
+
+  <a routerLink="/productos" class="nav-link">Productos</a>
+  <a routerLink="/opiniones" class="nav-link">Opiniones</a>
+
+  <div class="dropdown">
+    <button class="dropbtn">Categorías</button>
+    <div class="dropdown-content">
+      <div *ngIf="categorias.length > 0; else noCategories">
+        <a *ngFor="let categoria of categorias" [routerLink]="['/categoria', categoria.id]">
+          {{ categoria.nombre || 'Categoría sin nombre' }}
+        </a>
+      </div>
+      <ng-template #noCategories>
+        <span class="no-categories">No hay categorías disponibles</span>
+      </ng-template>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+<app-inactivity-timer *ngIf="isAuthenticated"></app-inactivity-timer>

@@ -1,0 +1,48 @@
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.763), rgba(0, 0, 0, 0.6)), url("https://www.elguerrero.com.mx/wp-content/uploads/2023/10/slider2.png");
+    height: 60vh;
+    align-items: center;
+    color: var(--text-color);
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0 1rem;
+}
+
+h1 {
+    text-align: center;
+    color: var(--highlight-color);
+    font-weight: 700;
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.7);
+}
+
+p {
+    text-align: center;
+    color: var(--text-color);
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto 1.5rem auto;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+.explore-button {
+    display: block;
+    margin: 0 auto;
+    padding: 12px 30px;
+    font-size: 1.25rem;
+    color: var(--dark-color);
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(255, 193, 7, 0.4);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.explore-button:hover {
+    background-color: #FFB300;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(255, 179, 0, 0.6);
+}

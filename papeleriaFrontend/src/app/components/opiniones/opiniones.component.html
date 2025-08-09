@@ -1,0 +1,23 @@
+<div class="container">
+  <h2>Registrar Opinión</h2>
+  <form (ngSubmit)="registrarOpinion()">
+    <input type="text" [(ngModel)]="nuevaOpinion.Nombre" name="Nombre" placeholder="Nombre del Usuario" required />
+    <input type="text" [(ngModel)]="nuevaOpinion.UsuarioId" name="UsuarioId" placeholder="ID de Usuario" required />
+    <input type="number" [(ngModel)]="nuevaOpinion.Calificacion" name="Calificacion" placeholder="Calificación (1-5)" min="1" max="5" required />
+    <textarea [(ngModel)]="nuevaOpinion.Comentario" name="Comentario" placeholder="Tu opinión" required></textarea>
+      <div class="button-container">
+    <button type="submit">Enviar Opinión</button>
+  </div>
+  </form>
+
+  <h3>Opiniones</h3>
+  <ul>
+    <li *ngFor="let opinion of opiniones" class="opinion-card">
+      <strong>Nombre: {{ opinion.Nombre }}</strong>
+      <strong>Usuario ID: {{ opinion.usuarioId }}</strong>
+      <div class="rating">Calificación: {{ opinion.calificacion }}</div>
+      <p>Comentario: {{ opinion.comentario }}</p>
+      <small>Fecha: {{ opinion.fecha | date:'medium' }}</small>
+    </li>
+  </ul>
+</div>

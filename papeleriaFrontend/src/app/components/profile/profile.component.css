@@ -1,0 +1,108 @@
+.profile-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 30px;
+  background-color: var(--background-color);
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  color: var(--dark-color);
+  font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+  text-align: center;
+  color: var(--highlight-color);
+  font-weight: 700;
+  margin-bottom: 25px;
+  font-size: 2.25rem;
+}
+
+.loading-spinner {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--text-color);
+}
+
+.profile-info {
+  margin-bottom: 25px;
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+
+.profile-info p {
+  margin: 8px 0;
+  padding: 12px 5px;
+  background-color: white;
+  color: var(--dark-color);
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.4);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: default;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.profile-info p:hover {
+  background-color: #514f4f38;
+  box-shadow: 0 6px 12px rgba(255, 255, 255, 0.6);
+}
+
+
+.btn-secondary {
+  margin-left: 20px;
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-weight: 400;
+  font-size: 1rem;
+  box-shadow: 0 4px 8px rgba(233, 30, 99, 0.4);
+}
+
+.btn-secondary:hover {
+  background-color: #C2185B;
+  box-shadow: 0 6px 12px rgba(194, 24, 91, 0.6);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--dark-color);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  width: 100%;
+  padding: 12px;
+  border: 1.5px solid var(--accent-color);
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 8px var(--primary-color);
+  outline: none;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}

@@ -1,0 +1,138 @@
+.navbar {
+  background-color: var(--primary-color); 
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.733);
+}
+
+.nav-link {
+  color: var(--secondary-color); 
+  font-weight: bold;
+  padding: 0.5rem 1rem;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  text-decoration: none;
+}
+
+
+.nav-link:hover {
+  color: var(--secondary-color);
+  transform: scale(2);
+  animation: zoomIn 0.5s ease forwards;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ffffff;
+  min-width: 150px;
+  font-size: .8rem;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 0.5rem 0;
+  border-radius: 0.5rem;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-content a {
+  color: #495057;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.2s ease;
+}
+
+.dropdown-content a:hover {
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+@keyframes zoomIn {
+  0% {
+    transform: scale(1); 
+    opacity: 0.8; 
+  }
+  100% {
+    transform: scale(1.4); 
+    opacity: 1;
+  }
+}
+
+.flex {
+  display: flex;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.mr-2 {
+  margin-right: 8px; 
+}
+
+
+.logo {
+  margin: 15px;
+  max-width: 40px; 
+  border-radius: 10%;
+  height: auto; 
+}
+
+.perfil-link {
+  margin: 20px 10px 20px 20px;
+  color: var(--secondary-color);
+  font-weight: bold;
+  font-size: 1rem; 
+  transition: color 0.3s ease;
+  text-decoration: none;
+}
+
+.perfil-link:hover {
+  color: var(--highlight-color); 
+  text-decoration:none; 
+  animation: zoomIn 0.5s ;
+}
+
+.cart-icon {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -10px;
+  background-color: var(--secondary-color);
+  color: white;
+  border-radius: 400px;
+  padding: 2px 6px;
+  font-size: 0.60rem;
+  font-weight: bold;
+  pointer-events: none;
+}
+
+.cart-badge:hover {
+  background-color: var(--highlight-color);
+  color: white;
+}

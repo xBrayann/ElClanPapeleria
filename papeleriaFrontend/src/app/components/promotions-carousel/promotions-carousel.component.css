@@ -1,0 +1,70 @@
+.carousel-container {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto 2rem auto;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px var(--primary-color);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
+
+.carousel-slide {
+  flex: 1;
+  text-align: center;
+}
+
+.promo-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.promo-image {
+  width: 150px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+  box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.promo-info {
+  text-align: left;
+}
+
+.promo-info h3 {
+  color: var(--highlight-color);
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+}
+
+.promo-info p {
+  color: var(--text-color);
+  margin: 0;
+  font-size: 1rem;
+}
+
+.nav-button {
+  background-color: var(--primary-color);
+  border: none;
+  color: var(--dark-color);
+  font-size: 2rem;
+  padding: 0.25rem 0.75rem;
+  cursor: pointer;
+  border-radius: 4px;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: var(--accent-color);
+  color: white;
+}
+
+.nav-button:focus {
+  outline: none;
+}

@@ -1,0 +1,54 @@
+<div class="cart-container">
+    <h2>Tu Carrito de Compras</h2>
+  
+    <div *ngIf="cartItems.length === 0" class="empty-cart">
+      <p>Tu carrito está vacío</p>
+      <a routerLink="/productos" class="btn-primary">
+        Ver Productos
+      </a>
+    </div>
+  
+    <div *ngIf="cartItems.length > 0">
+      <div class="cart-items">
+        <div *ngFor="let item of cartItems" class="cart-item">
+          <img [src]="item.imagen" [alt]="item.nombre" class="item-image">
+          
+          <div class="item-info">
+            <h3>{{ item.nombre }}</h3>
+            <p>{{ item.descripcion }}</p>
+            <p>Precio: ${{ item.precio | number }}</p>
+            
+            <div class="quantity-control">
+              <label>Cantidad:</label>
+              <input type="number" [(ngModel)]="item.quantity" min="1" (change)="updateQuantity(item, item.quantity)">
+            </div>
+          </div>
+  
+          <button class="btn-danger" (click)="removeItem(item)">
+            Eliminar
+          </button>
+        </div>
+      </div>
+  
+      <div class="cart-summary">
+        <h3>Resumen de Compra</h3>
+        <p>Total: ${{ total | number }}</p>
+
+        <label for="metodoPago" style="font-weight: bold; margin-bottom: 5px; display: block;">Método de Pago:</label>
+        <select id="metodoPago" [(ngModel)]="metodoSeleccionado" name="metodoPago" required
+          style="width: 100%; padding: 8px; border-radius: 4px; border: 1px solid #ccc; margin-bottom: 15px; font-size: 1rem;">
+          <option value="" disabled selected>Selecciona un método de pago</option>
+          <option *ngFor="let metodo of metodosPago" [value]="metodo.id">{{ metodo.nombre }}</option>
+        </select>
+
+        <button class="btn-primary" (click)="iniciarPago({items: getItemsForPago()})">
+          Finalizar Compra
+        </button>
+        <button *ngIf="metodoSeleccionado" class="pay-btn" (click)="iniciarPago({items: getItemsForPago()})">
+          Pagar con PayPal
+        </button>
+        <div id="paypal-button-container-cart" style="margin-top: 15px;"></div>
+
+      </div>
+    </div>
+  </div>

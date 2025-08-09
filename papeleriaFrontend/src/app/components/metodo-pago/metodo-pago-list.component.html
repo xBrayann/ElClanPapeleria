@@ -1,0 +1,43 @@
+<div class="container">
+  <h2>Métodos de Pago</h2>
+  <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
+  <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
+
+  <div class="form-table-wrapper">
+    <form (ngSubmit)="addMetodoPago()">
+      <label for="nombre">Nombre:</label>
+      <input id="nombre" [(ngModel)]="nuevoMetodo.nombre" name="nombre" required type="text">
+
+      <label for="descripcion">Descripción:</label>
+      <input id="descripcion" [(ngModel)]="nuevoMetodo.descripcion" name="descripcion" type="text">
+
+      <label for="activo">Activo:</label>
+      <input id="activo" type="checkbox" [(ngModel)]="nuevoMetodo.activo" name="activo">
+
+      <button type="submit">Agregar Método de Pago</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Activo</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let metodo of metodosPago">
+          <td data-label="Nombre">{{ metodo.nombre }}</td>
+          <td data-label="Descripción">{{ metodo.descripcion }}</td>
+          <td data-label="Activo" style="text-align: center;">{{ metodo.activo ? 'Sí' : 'No' }}</td>
+          <td data-label="Acciones" class="actions-cell">
+            <button class="delete-btn" (click)="deleteMetodoPago(metodo.id)">Eliminar</button>
+            <button *ngIf="metodo.activo" class="pay-btn" (click)="iniciarPago({items: [{title: 'Pago con ' + metodo.nombre, quantity: 1, unit_price: 1000}]})">Pagar con PayPal</button>
+            <div id="paypal-button-container"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

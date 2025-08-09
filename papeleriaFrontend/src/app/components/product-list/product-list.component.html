@@ -1,0 +1,28 @@
+<div class="product-list-container">
+    <app-promotions-carousel></app-promotions-carousel>
+    <h2>Nuestros Productos</h2>
+    
+    <div *ngIf="loading" class="loading-spinner">
+      Cargando productos...
+    </div>
+  
+    <div *ngIf="!loading && products.length === 0" class="no-products">
+      No se encontraron productos.
+    </div>
+  
+    <div class="product-grid">
+<div *ngFor="let product of products" class="product-card">
+  <img [src]="product.imagen" [alt]="product.nombre" class="product-image">
+  <div class="product-info">
+    <div class="product-text">
+      <h3 class="product-name">{{ product.nombre }}</h3>
+      <p class="product-description">{{ product.descripcion }}</p>
+      <p class="product-price">${{ product.precio | number }}</p>
+    </div>
+    <a [routerLink]="['/productos', product.id]" class="btn-primary">
+      Ver Detalles
+    </a>
+  </div>
+</div>
+    </div>
+</div>

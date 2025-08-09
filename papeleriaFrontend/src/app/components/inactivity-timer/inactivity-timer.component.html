@@ -1,0 +1,20 @@
+<div class="inactivity-warning" *ngIf="isWarningVisible">
+  <div class="warning-content">
+    <div class="warning-header">
+      <i class="fas fa-exclamation-triangle"></i>
+      <h3>¡Atención!</h3>
+    </div>
+    <div class="warning-body">
+      <p>Tu sesión está a punto de expirar por inactividad.</p>
+      <p>Tiempo restante: <strong>{{ formatTime(timeRemaining) }}</strong></p>
+    </div>
+    <div class="warning-actions">
+      <button class="btn btn-primary" (click)="extendSession()">
+        <i class="fas fa-clock"></i> Extender Sesión
+      </button>
+      <button class="btn btn-secondary" (click)="logout()">
+        <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+      </button>
+    </div>
+  </div>
+</div>
