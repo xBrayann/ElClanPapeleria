@@ -145,13 +145,11 @@ namespace PapeleriaApi.Controllers
                 return BadRequest(new { error = "Invalid email format", details = "Email must contain @" });
             }
 
-            // Get client IP address for tracking attempts
             var clientIp = HttpContext.Connection.RemoteIpAddress?.ToString() ?? "unknown";
             var attemptKey = $"{clientIp}:{request.Email.ToLower()}";
 
             lock (LockObject)
             {
-                // Clean up expired blocks
                 var expiredKeys = LoginAttempts.Where(kvp => 
                     kvp.Value.BlockedUntil.HasValue && 
                     kvp.Value.BlockedUntil.Value <= DateTime.Now).Select(kvp => kvp.Key).ToList();
@@ -323,9 +321,9 @@ namespace PapeleriaApi.Controllers
                     {
                         _logger.LogError(ex, "Error al crear usuario en Firebase - EMAIL_EXISTS: {Email}", usuario.Email);
                         return Conflict(new { 
-                            error = "EMAIL_EXISTS", 
-                            message = "This email address is already registered. Please login or use a different email.",
-                            details = "The email is already associated with an existing account."
+                            error = "Email ya registrado", 
+                            message = "Este email ya esta registrado. Por favor inicia sesion o registrar otro email.",
+                            details = "El email ya esta asociada a una cuenta existente."
                         });
                     }
                     else

@@ -21,7 +21,6 @@ export class LockoutService {
   }
 
   private setupTimer(): void {
-    // Timer que se activa cuando hay un bloqueo activo
     combineLatest([this.lockoutEndTime$, timer(0, 1000)]).pipe(
       map(([endTime, _]) => {
         const now = Date.now();
@@ -29,7 +28,6 @@ export class LockoutService {
       }),
       distinctUntilChanged()
     ).subscribe(seconds => {
-      // Si el tiempo llega a 0, limpiar el bloqueo
       if (seconds === 0 && this.lockoutEndTimeSubject.value > 0) {
         this.clearLockout();
       }
@@ -44,7 +42,6 @@ export class LockoutService {
       if (endTime > Date.now()) {
         this.lockoutEndTimeSubject.next(endTime);
       } else {
-        // Si el tiempo expiró, limpiar
         this.clearLockout();
       }
       this.failedAttemptsSubject.next(attempts);

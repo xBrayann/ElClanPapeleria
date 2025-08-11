@@ -13,6 +13,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth, Auth } from 'firebase/auth';
 import { environment } from '../../../environments/environment';
 import { ValidationPatterns } from '../../utils/validation-patterns';
+import { SmartValidator } from '../../utils/smart-validator';
 
 interface LoginData {
   email: string;
